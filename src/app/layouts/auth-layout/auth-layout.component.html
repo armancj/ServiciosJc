@@ -1,0 +1,85 @@
+<div class="main-content">
+  <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+    <div class="container px-4 mr-auto">
+      <div class="wrapper_logo">
+        <a class="navbar-brand" routerLinkActive="active">
+          <img src="assets/img/logos/logoblanco2.png" />
+        </a>
+      </div>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-icon downloadapk"
+            href="assets/apk/servicios.apk"
+          >
+            <i
+              class="ni ni-cloud-download-95 text-white icon_auth"
+              id="apk"
+            ></i>
+            <span class="nav-link-inner text-white"> Apk</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" [routerLink]="['/serv_init']">
+            <i class="ni ni-planet text-white icon_auth"></i>
+            <span class="nav-link-inner text-white">Servicios</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 d-flex justify-content-center footer_text">
+        &copy; {{ test | date: "yyyy" }} GDAI-Jovenclub Las Tunas
+      </div>
+    </div>
+  </div>
+  <!-- <footer class="py-5">
+    <div class="container">
+      <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-6">
+          <div class="copyright text-center text-xl-left text-muted">
+            &copy; {{ test | date: "yyyy" }}
+            <a href="#" class="font-weight-bold ml-1" target="_blank"
+              >Gdai-Jovenclub Las Tunas</a
+            >
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <ul
+            class="nav nav-footer justify-content-center justify-content-xl-end"
+          >
+            <li class="nav-item">
+              <a
+                href="https://www.facebook.com/Joven-Club-Las-Tunas-1473445202915860/?fref=ts"
+                class="nav-link"
+                target="_blank"
+                placement="top-center"
+                triggers="hover focus click"
+                ngbTooltip="Siguenos en Facebook"
+              >
+                <img src="assets/img/icon_facebook.png" alt="Facebook"
+              /></a>
+            </li>
+            <li class="nav-item mr-2 pr-2">
+              <a
+                href="https://twitter.com/jovenclub_tunas?lang=en"
+                class="nav-link"
+                target="_blank"
+                placement="top-center"
+                triggers="hover focus click"
+                ngbTooltip="Siguenos en Twitter"
+              >
+                <img src="assets/img/icon_twitter.png" alt="Twitter"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+</div>

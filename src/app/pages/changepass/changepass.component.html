@@ -1,0 +1,121 @@
+<div class="header py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-secondary border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+          <!--Stepper-->
+          <div class="container">
+            <div id="stepper1" class="bs-stepper">
+              <div class="bs-stepper-header">
+                <div class="step" data-target="#test-l-1">
+                  <button class="step-trigger">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label">Correo</span>
+                  </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#test-l-2">
+                  <button class="step-trigger">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label">Contraseña</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="bs-stepper-content">
+                <div id="test-l-1" class="content">
+                  <form [formGroup]="_emailForm" (ngSubmit)="next()">
+                    <div class="form-group">
+                      <label for="email">Ingrese su Correo</label>
+                      <input
+                        class="form-control"
+                        placeholder="ejemplo@gmail.com"
+                        formControlName="email"
+                      />
+                    </div>
+                    <button
+                      [disabled]="_emailForm.invalid"
+                      class="btn btn-primary"
+                      type="submit"
+                    >
+                      Continuar
+                    </button>
+                    <button
+                      class="btn btn-danger"
+                      (click)="Cancelar()"
+                      type="button"
+                    >
+                      Cancelar
+                    </button>
+                  </form>
+                </div>
+
+                <div id="test-l-2" class="content">
+                  <form [formGroup]="_changePassForm" (ngSubmit)="Cambiar()">
+                    <div class="form-group">
+                      <label for="newPass">Nueva Contraseña</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        formControlName="passnew"
+                        placeholder="Nueva Contraseña"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="confPass">Confirmar Contraseña</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        formControlName="passconf"
+                        placeholder="Confirmar Contraseña"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="codigo"
+                        >Codigo:
+                        <small class="text-red">Revise su correo</small></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="codigo"
+                        placeholder="Codigo"
+                      />
+                    </div>
+
+                    <button
+                      type="button"
+                      (click)="atras()"
+                      class="btn btn-danger"
+                    >
+                      Atras
+                    </button>
+                    <button
+                      type="submit"
+                      [disabled]="_changePassForm.invalid"
+                      class="btn btn-success"
+                    >
+                      Cambiar
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--End Stepp-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

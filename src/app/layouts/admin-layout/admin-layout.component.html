@@ -1,0 +1,15 @@
+<!-- Sidenav -->
+<div [ngClass]="{ noauth: _mostrarside == false, auth: _mostrarside == true }">
+  <app-sidebar></app-sidebar>
+</div>
+<div
+  class="main-content"
+  [ngClass]="_mostrarside ? 'main-content' : 'containerfull'"
+>
+  <!-- Top navbar -->
+  <app-navbar></app-navbar>
+  <!-- Pages -->
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</div>

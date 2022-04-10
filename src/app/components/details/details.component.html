@@ -1,0 +1,168 @@
+<div class="wrapper_card_details">
+  <div
+    class=""
+    [ngClass]="
+      _solicitar
+        ? 'card bg-secondary card_details card_expand'
+        : 'card bg-secondary card_details'
+    "
+  >
+    <div class="row justify-content-center">
+      <div class="col-lg-3 order-lg-2">
+        <div class="card-profile-image">
+          <div
+            class="images"
+            mat-card-avatar
+            #image
+            [ngClass]="animationElement"
+          >
+            <img
+              class="imagen_card"
+              src="{{ urlapi }}/service/picture/{{ servicio.picture }}"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4 card_header_border"
+    >
+      <div class="col-5 mr-auto text-left">
+        <a class="back" (click)="goBack()" #back>
+          <i class="fa fa-arrow-left" aria-hidden="true"> Atras</i>
+        </a>
+      </div>
+    </div>
+    <div class="card-body pt-0 pt-md-4 mt-6">
+      <div class="container">
+        <div class="row">
+          <div [ngClass]="_solicitar ? 'col-lg-6' : 'col-lg-12'">
+            <div class="property-info" #info [ngClass]="animationElement">
+              <h4 class="heading-4 titlesdetails">{{ servicio.name }}</h4>
+              <span class="type"
+                ><span class="encabezados">Tipo de Cliente:</span>
+                <ng-container *ngIf="servicio.service_to == 'BOTH'">
+                  Empresa o Natural
+                </ng-container>
+                <ng-container *ngIf="servicio.service_to == 'NATURAL'">
+                  Natural
+                </ng-container>
+                <ng-container *ngIf="servicio.service_to == 'ENTERPRISE'">
+                  Empresa
+                </ng-container>
+              </span>
+
+              <div class="more">
+                <div>
+                  <span
+                    ><span class="encabezados">Resumen: </span>
+                    {{ servicio.summary }}
+                  </span>
+                </div>
+                <div class="descrip">
+                  <span
+                    ><span class="encabezados">Descripción: </span>
+                    {{ servicio.description }}
+                  </span>
+                </div>
+              </div>
+              <div
+                [ngClass]="
+                  _solicitar ? 'wrapper_price_solicitud' : 'wrapper_price'
+                "
+              >
+                <ng-container *ngIf="servicio.price != 0; else gratis">
+                  <span [ngClass]="_solicitar ? 'price_contract' : 'price'">
+                    {{ servicio.price }}
+                  </span>
+                  <span [ngClass]="_solicitar ? 'cup_contract' : 'cup'">
+                    cup</span
+                  >
+                </ng-container>
+                <ng-template #gratis>
+                  <span class="price_gratis">Gratis</span>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="_solicitar">
+            <div class="col wrapper_form_solicitud">
+              <form [formGroup]="_formSolicitud">
+                <span>Detalles:</span>
+                <textarea
+                  class="form-control"
+                  placeholder="Detalles de la solicitud"
+                  id="floatingTextarea"
+                  formControlName="details"
+                ></textarea>
+
+                <h3 class="my-2">Dia y hora que desea el Servicio:</h3>
+                <div class="row mt-2">
+                  <div class="col">
+                    <span>Fecha:</span>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="ni ni-calendar-grid-58"></i
+                        ></span>
+                      </div>
+                      <input
+                        class="form-control datepicker pl-2"
+                        placeholder="Seleccione el dia"
+                        name="dp"
+                        formControlName="fecha"
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                        (click)="d.toggle()"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <span>Hora:</span>
+                    <ngb-timepicker
+                      formControlName="hours"
+                      [meridian]="meridian"
+                      [spinners]="showSpinners"
+                    ></ngb-timepicker>
+                  </div>
+                </div>
+              </form>
+              <div class="my-4">
+                <button
+                  type="button"
+                  (click)="cancelarSolicitud()"
+                  class="btn btn-outline-danger"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  (click)="solicitarServic(_formSolicitud.value)"
+                >
+                  Confirmar
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <!-- <ng-container *ngIf="_solicitar"> -->
+        <div class="row">
+          <div class="col">
+            <button
+              [disabled]="_solicitar"
+              class="call mt-2"
+              #call
+              (click)="_solicitar = !_solicitar"
+            >
+              Solicitar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--   </ng-container> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+<table class="cropimg">
+    <tr >
+        <input class="form-control" #fileInput type="file" accept="images/*" (change)="onSelectFile()">
+    </tr>
+    <tr  *ngIf="imageUrl">
+        <th class="mt-5 imacrop">
+            
+            <angular-cropper  [cropperOptions]="config" [imageUrl] = "imageUrl" #angularCropper (click)="getCroppedImage()" ></angular-cropper>
+            <div class="mt-2">
+                <button class="btn btn-primary" (click)="zoomOut()">-</button>
+                <button class="btn btn-primary ml-2" (click)="zoomIn()">+</button>
+           
+        </div>
+        </th>
+        <td >
+            <img class="imgresul mt-0" [src]="croppedresult" alt="">
+        </td>
+        
+    </tr>
+</table>
+

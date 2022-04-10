@@ -1,0 +1,31 @@
+<div class="card bg-gradient-default shadow">
+  <div class="card-header bg-transparent">
+    <div class="row align-items-center">      
+      <div class="col">
+        <h6 class="text-uppercase text-muted ls-1 mb-1">{{texts[0]}}</h6>
+
+        <h2 class="mb-0 text-white">{{texts[1]}}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <!-- Chart -->
+   
+    <div class="chart">    
+        <canvas  baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [colors]="barChartColors"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+          [plugins]="barChartPlugins"
+          class="chart-canvas"
+          >
+        </canvas>
+    
+      </div>  
+    
+  
+  </div>
+</div>

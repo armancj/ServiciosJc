@@ -1,0 +1,123 @@
+<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"></a>
+    <!-- Form -->
+
+    <!-- User -->
+    <ng-container *ngIf="_isLoged">
+      <ul class="navbar-nav align-items-center d-none d-md-flex">
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link nav-link-icon" role="button" ngbDropdownToggle>
+            <i class="ni ni-bell-55"></i
+            ><span
+              class="badge notif_count bg-danger"
+              *ngIf="_notifications.length != 0 && contador != 0"
+              >{{ contador }}</span
+            >
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <a
+              class="dropdown-item"
+              *ngIf="_notifications.length == 0"
+              href="javascript:void(0)"
+              >No tiene ninguna notificacion</a
+            >
+            <ng-container *ngIf="_notifications.length != 0">
+              <a
+                class="dropdown-item"
+                [ngClass]="{
+                  'text-red': _notif.status == 2
+                }"
+                href="javascript:void(0)"
+                *ngFor="let _notif of _notifications; let i = index"
+                (click)="LeerNotificacion(_notif.id)"
+              >
+                <span *ngIf="_notif.type == 2"
+                  >Su solicitud numero {{ _notif.request.id }} fue
+                  <a [routerLink]="'/solicitudes'">{{
+                    _notif.request.status | translate
+                  }}</a>
+                </span>
+                <span *ngIf="_notif.type == 3"
+                  >Su solicitud numero {{ _notif.request.id }} fue
+                  Modificada</span
+                >
+              </a>
+            </ng-container>
+          </div>
+        </li>
+
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+            <div class="media align-items-center">
+              <ng-container
+                *ngIf="
+                  _usuarioLoged.avatar != null &&
+                  _usuarioLoged.avatar != 'user.png'
+                "
+              >
+                <span class="avatar avatar-sm rounded-circle">
+                  <img
+                    alt="Image placeholder"
+                    src="{{ urlapi }}/users/avatar/{{ _usuarioLoged.avatar }}"
+                  />
+                </span>
+              </ng-container>
+              <ng-container
+                *ngIf="
+                  _usuarioLoged.avatar == null ||
+                  _usuarioLoged.avatar == 'user.png'
+                "
+              >
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="assets/img/user.png" />
+                </span>
+              </ng-container>
+
+              <div class="media-body ml-2 d-none d-lg-block">
+                <span class="mb-0 text-sm">{{ _usuarioLoged.username }}</span>
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <div class="dropdown-header noti-title">
+              <h6 class="text-overflow m-0">Bienvenido!</h6>
+            </div>
+
+            <a
+              routerLinkActive="active"
+              [routerLink]="['/perfil']"
+              class="dropdown-item"
+            >
+              <i class="ni ni-single-02"></i>
+              <span>Mi Perfil</span>
+            </a>
+
+            <a
+              routerLinkActive="active"
+              [routerLink]="['/solicitudes']"
+              class="dropdown-item"
+            >
+              <i class="ni ni-calendar-grid-58"></i>
+              <span>Mis solicitudes</span>
+            </a>
+
+            <a
+              class="dropdown-item downloadapk"
+              href="assets/apk/servicios.apk"
+            >
+              <i class="ni ni-cloud-download-95"></i>
+              <span>Descargar Apk</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#!" class="dropdown-item" (click)="logout()">
+              <i class="ni ni-user-run"></i>
+              <span>Salir</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+</nav>

@@ -1,0 +1,57 @@
+<!-- Page content -->
+
+<div>
+  <div
+    class="listing-actions"
+    [ngStyle]="(ui.getOpenState() | async) === 'open' && { width: '50%' }"
+  >
+    <h1 class="heading-1 text-white" [ngClass]="animationElement">
+      Servicios Disponibles
+    </h1>
+    <div class="actions" [ngClass]="animationElement"></div>
+  </div>
+  <div
+    class="listings wrapper_scroll"
+    [@elementAnimations]="servicios.length"
+    (@elementAnimations.done)="animationDone($event)"
+  >
+    <div
+      class="listing element"
+      *ngFor="let item of servicios"
+      routerLinkActive
+      #routerLink="routerLinkActive"
+      [class.active]="routerLink.isActive"
+      (click)="onNavigate(item)"
+    >
+      <div class="listing__image">
+        <img
+          class="images"
+          src="{{ urlapi }}/service/picture/{{ item.picture }}"
+          alt="image"
+        />
+      </div>
+      <div class="listing__description">
+        <div class="listing__heading">
+          <h4 class="heading-4 h4_title">{{ item.name }}</h4>
+        </div>
+        <div class="hr_card"></div>
+        <div class="listing__info">
+          <span>{{ item.summary }} </span>
+        </div>
+
+        <div class="listing__footer">
+          <div class="wrapper_price">
+            <ng-container *ngIf="item.price != 0; else gratis">
+              <span class="price"> {{ item.price }}</span>
+              <span class="cup"> cup</span>
+            </ng-container>
+
+            <ng-template #gratis>
+              <span class="price_gratis">Gratis</span>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

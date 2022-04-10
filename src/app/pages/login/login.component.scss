@@ -1,0 +1,122 @@
+.pass-reg {
+  text-decoration: none;
+  color: white !important;
+}
+.p_b-4 {
+  padding-bottom: 4% !important;
+}
+.hr_bienv {
+  height: 7px;
+  width: 100%;
+  background-color: #fdc102;
+  margin: -4px 0 3px 0;
+  border-radius: 2px;
+}
+#second {
+  background-color: #aa9595;
+  height: 4px;
+  border-radius: 1px;
+  margin: 0 0 10px 0;
+}
+.bienv {
+  font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-size: 84.5px;
+  letter-spacing: normal;
+  margin: 0 0 30px -5px;
+  color: #ffffff !important;
+}
+.iconos-login {
+  height: 35px !important;
+  width: 43px !important;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 50px 0px 0px 50px;
+}
+.pr_15 {
+  padding-right: 15px !important;
+}
+.text_frase {
+  margin-top: 57px;
+  font-size: 12px;
+  font-style: oblique;
+}
+.input_login {
+  border-radius: 0 50px 50px 0;
+  height: 35px;
+}
+.col_login {
+  padding-top: 70px;
+  justify-content: center;
+  display: flex;
+}
+.col_register {
+  padding-top: 40px;
+  justify-content: center;
+  display: flex;
+}
+.input_wrapper_login {
+  height: 35px;
+  width: 300px;
+}
+
+.btn_login {
+  width: 300px;
+  height: 35px;
+  border-radius: 50px;
+  background-color: #fdc102;
+  border: none;
+  outline: none;
+  margin-bottom: 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif !important;
+}
+.btn_login:disabled {
+  border: none;
+  outline: none;
+}
+.fontsize_12 {
+  font-size: 12px;
+}
+.mb_5 {
+  margin-bottom: 5px !important;
+}
+.color_pass {
+  color: #ffd54f;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+}
+#register {
+  color: #aa9595;
+}
+.color_register {
+  color: #fffcc8;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+}
+.decoration {
+  text-decoration: underline;
+}
+.btn_social {
+  height: 35px;
+  width: 35px;
+  background-color: rgba(0, 0, 0, 0.18);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 20px;
+}
+#twitter {
+  font-size: 18px;
+}
+.wrapper_btn_social {
+  display: flex;
+  justify-content: space-evenly;
+
+  height: 40px;
+}

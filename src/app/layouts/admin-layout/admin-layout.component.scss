@@ -1,0 +1,26 @@
+.containerfull {
+  margin-left: auto !important;
+  background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
+}
+.noauth {
+  display: none !important;
+}
+.main-content {
+  background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
+  height: auto;
+  min-height: 100%;
+  z-index: 1;
+}
+.auth {
+  display: block;
+}
+
+@media only screen and (max-width: 600px) {
+  .noauth {
+    display: block !important;
+  }
+}
+
+.container-fluid {
+  padding-top: 90px !important;
+}

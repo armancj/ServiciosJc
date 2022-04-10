@@ -1,0 +1,23 @@
+.avatar {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+.div_solicitud {
+  flex: 10;
+
+  display: flex;
+  justify-content: center;
+}
+
+.icon-arrow {
+  cursor: pointer;
+}
+
+.wrapper_btn_cancel {
+  padding: 0 1.5rem;
+}
+
+.btn_cancel {
+  width: 100%;
+  margin: 0 0 15px 0;
+}

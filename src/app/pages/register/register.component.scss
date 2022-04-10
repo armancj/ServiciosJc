@@ -1,0 +1,62 @@
+.bienv {
+  font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+
+  font-size: 50px;
+  letter-spacing: normal;
+  margin: 0 0 16px 0px;
+  color: #ffffff !important;
+}
+.hr_bienv {
+  height: 5px;
+  width: 100%;
+  background-color: #aa9595;
+  margin: -4px 0 2px 0;
+  border-radius: 2px;
+}
+#second {
+  background-color: #fdc102;
+  height: 2px;
+  border-radius: 1px;
+  margin: 0 0 10px 0;
+}
+#cancel {
+  background-color: #aa9595 !important;
+  border: none;
+  outline: none;
+}
+
+.input_register {
+  border-radius: 0 50px 50px 0;
+  height: 35px;
+}
+.icon_register {
+  border-radius: 50px 0px 0px 50px;
+  height: 35px;
+}
+
+.select_register {
+  border-radius: 50px;
+  height: 35px;
+}
+
+.btn_register {
+  width: 100%;
+  height: 35px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: sans-serif !important;
+}
+#accept {
+  background-color: #fdc102;
+  border: none;
+  outline: none;
+}
+.txt_register {
+  font-size: 11px;
+  margin-left: 1rem !important;
+  margin-bottom: 0px !important;
+  font-family: sans-serif !important;
+}

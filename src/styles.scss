@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~animate.css/animate.min";
+@import "~bs-stepper/dist/css/bs-stepper.min.css";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: sans-serif, Roboto, "Helvetica Neue";
+}
+.dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.dz-preview-single {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 0.375rem;
+}
+.downloadapk {
+  cursor: pointer;
+}
+.tableclick {
+  cursor: pointer;
+}
+.dz-message {
+  z-index: 999;
+  padding: 5rem 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  color: #8898aa;
+  border: 1px dashed #dee2e6;
+  border-radius: 0.375rem;
+  background-color: #fff;
+  order: -1;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(74, 74, 74, 0.8);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 990px) {
+  .buscar {
+    flex: 0 0 200px !important;
+    max-width: 50% !important;
+  }
+
+  .navbar-expand-md .navbar-nav {
+    margin-left: auto !important;
+  }
+}
+
+table {
+  cursor: pointer;
+  tr:hover {
+    background-color: rgba(164, 164, 196, 0.8);
+  }
+
+  .table-act {
+    background-color: rgba(153, 108, 108, 0.8);
+  }
+}

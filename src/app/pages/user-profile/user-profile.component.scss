@@ -1,0 +1,25 @@
+.botonesrespon {
+  display: none;
+}
+.botonesnormales {
+  display: flex;
+  margin-left: 4rem;
+}
+.cursor {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .editperfil {
+    margin-top: 2rem;
+  }
+  .botonesrespon {
+    display: flex;
+    margin-top: 8rem;
+    margin-right: auto;
+  }
+
+  .botonesnormales {
+    display: none;
+  }
+}

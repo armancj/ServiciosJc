@@ -1,0 +1,146 @@
+<div class="header p_b-4 pt-8 pt-lg-6">
+  <div class="container">
+    <div class="header-body text-center mb-5 mt-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <h1 class="bienv">Bienvenido!!</h1>
+          <div class="hr_bienv"></div>
+          <div id="second" class="hr_bienv"></div>
+          <p class="text-lead text-white text-justify">
+            A través de nuestra página estamos con usted, en casa. Podrá
+            consumir nuestra variedad de servicios, agilizando los procesos
+            donde no solo usted será el beneficiado sino toda la familia.
+          </p>
+
+          <p class="text-lead text-white text_frase">
+            "...Joven Club de fábrica, de instituciones y Joven Club popular,
+            porque estos son los que están allí al lado de los vecinos, este es
+            el médico de la familia, la computadora de la familia..."
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-2"></div>
+
+        <div class="col-lg-5 col-md-6 col_login">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="form-group mb-3">
+              <div
+                class="input-group input-group-alternative input_wrapper_login"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text iconos-login"
+                    ><i class="ni ni-single-02"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control input_login"
+                  placeholder="Usuario"
+                  type="text"
+                  formControlName="username"
+                />
+              </div>
+            </div>
+            <div class="form-group mb_5">
+              <div
+                class="input-group input-group-alternative input_wrapper_login"
+              >
+                <div class="input-group-prepend">
+                  <span
+                    class="input-group-text iconos-login"
+                    (click)="verpass()"
+                    ><i
+                      class="fa"
+                      [ngClass]="_verpass ? 'fa-eye' : 'fa-eye-slash'"
+                    ></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control input_login"
+                  placeholder="Contraseña"
+                  [type]="_verpass ? 'text' : 'password'"
+                  formControlName="password"
+                />
+              </div>
+            </div>
+            <div class="d-flex px-1">
+              <a
+                href="javascript:void(0)"
+                class="text-light"
+                (click)="RecuperarPass()"
+              >
+                <span class="text-light fontsize_12">
+                  Olvido su <span class="color_pass">contraseña?</span></span
+                >
+              </a>
+              <a [routerLink]="['/register']" class="text-light ml-auto">
+                <span id="register" class="fontsize_12 color_pass">
+                  Registrase!</span
+                >
+              </a>
+            </div>
+
+            <div class="text-center">
+              <button
+                type="submit"
+                [disabled]="loginForm.invalid"
+                class="btn btn-success my-4 btn_login"
+              >
+                Entrar
+              </button>
+            </div>
+            <div class="wrapper_btn_social">
+              <a
+                href="https://www.facebook.com/Joven-Club-Las-Tunas-1473445202915860/?fref=ts"
+                target="_blank"
+              >
+                <div id="facebook" class="btn_social">
+                  <i class="fab fa-facebook-f"></i>
+                </div>
+              </a>
+              <a
+                href="https://twitter.com/jovenclub_tunas?lang=en"
+                target="_blank"
+              >
+                <div id="twitter" class="btn_social">
+                  <i class="fab fa-twitter"></i>
+                </div>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<!-- <div class="container mt--9 mt-lg--7 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent pb-5">
+          <div class="text-muted text-center mt-2 mb-3">
+            <h2>Autenticar</h2>
+          </div>
+        </div>
+        <div class="card-body px-lg-5 py-lg-5">
+         
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6">
+          <a
+            href="javascript:void(0)"
+            class="text-light"
+            (click)="RecuperarPass()"
+            ><h4 class="text-light">Olvido su contraseña?</h4></a
+          >
+        </div>
+        <div class="col-6 text-right">
+          <a [routerLink]="['/register']" class="text-light"
+            ><h4 class="text-light">Registrarse</h4></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,147 @@
+<div class="landingpage">
+  <nav class="navbar fixed-top navbar-expand-lg barrasuperior">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Joven Club en Casa</a>
+      <button
+        class="navbar-toggler btnmenu"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="d-flex"></div>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li
+            [routerLink]="['/inicio']"
+            (click)="toHome()"
+            routerLinkActive="active"
+          >
+            Inicio
+          </li>
+          <li class="nav-item" (click)="toServices()" routerLinkActive="active">
+            Servicios
+          </li>
+          <li class="nav-item" (click)="toAbout()" routerLinkActive="active">
+            Quienes Somos?
+          </li>
+          <li class="nav-item" (click)="toContact()" routerLinkActive="active">
+            Contactanos
+          </li>
+          <li class="nav-item" routerLink="/login" routerLinkActive="active">
+            ENTRAR
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <section id="inicio" class="inicio">
+      <app-carousel></app-carousel>
+    </section>
+    <section id="servicios" class="sectionServices">
+      <div class="row mx-2 wrap">
+        <div
+          data-aos="flip-left"
+          data-aos-duration="250"
+          class="col-xs-12 col-lg-3 mt-5"
+        >
+          <app-servicecard></app-servicecard>
+        </div>
+        <div
+          data-aos="flip-left"
+          data-aos-duration="500"
+          class="col-xs-12 col-lg-3 mt-5"
+        >
+          <app-servicecard></app-servicecard>
+        </div>
+        <div
+          data-aos="flip-left"
+          data-aos-duration="750"
+          class="col-xs-12 col-lg-3 mt-5"
+        >
+          <app-servicecard></app-servicecard>
+        </div>
+        <div
+          data-aos="flip-left"
+          data-aos-duration="1000"
+          class="col-xs-12 col-lg-3 mt-5"
+        >
+          <app-servicecard></app-servicecard>
+        </div>
+        <div
+          data-aos="flip-left"
+          data-aos-duration="1250"
+          class="col-xs-12 col-lg-3 mt-5"
+        >
+          <app-servicecard></app-servicecard>
+        </div>
+        <div
+          data-aos="flip-left"
+          data-aos-duration="1500"
+          class="col-xs-12 col-lg-3 mt-5"
+        >
+          <app-servicecard></app-servicecard>
+        </div>
+        <div
+          data-aos="flip-left"
+          data-aos-duration="1750"
+          class="col-xs-12 col-lg-3 mt-5"
+        >
+          <app-servicecard></app-servicecard>
+        </div>
+        <div
+          data-aos="flip-left"
+          data-aos-duration="2000"
+          class="col-xs-12 col-lg-3 mt-5"
+        >
+          <app-servicecard></app-servicecard>
+        </div>
+      </div>
+    </section>
+    <section id="aboutus" class="sectionAbout">
+      <div class="row">
+        <div class="col">
+          <img
+            class="img-landing"
+            data-aos="zoom-in"
+            data-aos-duration="3000"
+            src="https://picsum.photos/1066/900?image=3"
+          />
+        </div>
+        <div class="col">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            impedit debitis voluptatum quaerat possimus consectetur illum
+            assumenda cum quo. Sit vitae architecto quisquam hic rem sed fuga
+            culpa ipsa ex.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="sectionContact" id="contact">
+      <div class="row">
+        <div class="col">
+          <img
+            class="img-landing"
+            data-aos="zoom-out"
+            data-aos-duration="3000"
+            src="https://picsum.photos/1066/900?image=4"
+          />
+        </div>
+        <div class="col">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            impedit debitis voluptatum quaerat possimus consectetur illum
+            assumenda cum quo. Sit vitae architecto quisquam hic rem sed fuga
+            culpa ipsa ex.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

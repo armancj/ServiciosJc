@@ -1,0 +1,90 @@
+.landingpage {
+  background-image: url("../../../../assets/bg_345.png");
+  background-size: cover;
+  height: 100vh;
+}
+
+.img-landing {
+  height: 600px !important;
+  width: 700px !important;
+  margin: 5rem;
+}
+.derecha {
+  display: block;
+  align-items: flex-end;
+  text-align: start;
+}
+.inicio {
+  margin-top: 6rem !important;
+}
+section {
+  margin-top: 2px;
+}
+.sectionServices {
+  background-color: rgb(221, 215, 215, 0.493);
+
+  margin-top: 5px;
+  color: rgb(248, 248, 248);
+}
+.carousel {
+  height: 100vh !important;
+
+  img {
+    height: 100% !important;
+  }
+}
+.btnmenu {
+  color: #fff;
+}
+.sectionAbout {
+  background-color: rgb(174, 212, 243, 0.493);
+  height: 100vh;
+  margin-top: 5px;
+  color: rgb(248, 248, 248);
+}
+.sectionContact {
+  background-color: rgb(181, 180, 241, 0.493);
+  height: 100vh;
+  margin-top: 5px;
+  color: rgb(248, 248, 248);
+}
+.barrasuperior {
+  height: 100px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+  background-color: rgba(36, 110, 194, 0.493);
+  color: rgb(248, 248, 248);
+  li {
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  li:active {
+    color: tomato;
+  }
+  .navbar-brand {
+    color: rgb(248, 248, 248) !important;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .img-landing {
+    height: 300px !important;
+    width: 300px !important;
+  }
+
+  .carousel {
+    height: 80vh !important;
+
+    img {
+      height: 80vh !important;
+    }
+  }
+  .sectionAbout {
+    height: 80vh;
+  }
+  .sectionContact {
+    height: 80vh;
+  }
+}

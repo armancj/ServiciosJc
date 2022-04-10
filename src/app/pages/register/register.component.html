@@ -1,0 +1,340 @@
+<div class="header py-8 py-lg-6">
+  <div class="container">
+    <div class="header-body mb-5 mt-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <form [formGroup]="formUser" (ngSubmit)="registrarUser()">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group mb-3">
+                  <label class="form-control-label text-white txt_register"
+                    >Tipo de Cliente:</label
+                  >
+                  <select
+                    class="form-control select_register"
+                    aria-label="Default select example"
+                    formControlName="rol"
+                    #rol
+                    (change)="SeleccionarType(rol.value)"
+                  >
+                    <option
+                      value="CLIENT"
+                      [selected]="_typeCliente == 'CLIENT'"
+                    >
+                      NATURAL
+                    </option>
+                    <option value="ENTERPRISE">EMPRESA</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text icon_register"
+                    ><i class="ni ni-hat-3"></i
+                  ></span>
+                </div>
+                <ng-container *ngIf="_typeCliente == 'CLIENT'">
+                  <input
+                    class="form-control input_register"
+                    placeholder="Nombre y Apellidos"
+                    type="text"
+                    formControlName="fullname"
+                  />
+                </ng-container>
+                <ng-container *ngIf="_typeCliente == 'ENTERPRISE'">
+                  <input
+                    class="form-control input_register"
+                    placeholder="Nombre de la Entidad"
+                    type="text"
+                    formControlName="fullname"
+                  />
+                </ng-container>
+              </div>
+              <mat-error
+                *ngIf="
+                  formUser.get('fullname').invalid &&
+                  (formUser?.get('fullname').dirty ||
+                    formUser?.get('fullname').touched)
+                "
+              >
+                {{ getErrorMessage("fullname") }}
+              </mat-error>
+            </div>
+            <div class="row">
+              <!--  <div class="col-lg-6">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="ni ni-hat-3"></i
+                      ></span>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Usuario"
+                      type="text"
+                      formControlName="username"
+                    />
+                  </div>
+                  <mat-error
+                    *ngIf="
+                      formUser.get('username').invalid &&
+                      (formUser?.get('username').dirty ||
+                        formUser?.get('username').touched)
+                    "
+                  >
+                    {{ getErrorMessage("username") }}
+                  </mat-error>
+                </div>
+              </div> -->
+              <ng-container *ngIf="_typeCliente == 'CLIENT'">
+                <div class="col-lg-6">
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text icon_register"
+                          ><i class="ni ni-hat-3"></i
+                        ></span>
+                      </div>
+                      <input
+                        class="form-control input_register"
+                        placeholder="No.Carnet"
+                        type="text"
+                        formControlName="ci"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                        onKeyDown="if(this.value.length==11 && event.keyCode!=8) return false;"
+                      />
+                    </div>
+                    <mat-error
+                      *ngIf="
+                        formUser.get('ci').invalid &&
+                        (formUser?.get('ci').dirty ||
+                          formUser?.get('ci').touched)
+                      "
+                    >
+                      {{ getErrorMessage("ci") }}
+                    </mat-error>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="_typeCliente == 'ENTERPRISE'">
+                <div class="col-lg-6">
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text icon_register"
+                          ><i class="ni ni-hat-3"></i
+                        ></span>
+                      </div>
+                      <input
+                        class="form-control input_register"
+                        placeholder="Código REUP"
+                        type="text"
+                        formControlName="ci"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                        onKeyDown="if(this.value.length==11 && event.keyCode!=8) return false;"
+                      />
+                    </div>
+                    <mat-error
+                      *ngIf="
+                        formUser.get('ci').invalid &&
+                        (formUser?.get('ci').dirty ||
+                          formUser?.get('ci').touched)
+                      "
+                    >
+                      {{ getErrorMessage("ci") }}
+                    </mat-error>
+                  </div>
+                </div>
+              </ng-container>
+              <div class="col-lg-6">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text icon_register"
+                        ><i class="ni ni-mobile-button"></i
+                      ></span>
+                    </div>
+                    <input
+                      class="form-control input_register"
+                      placeholder="Teléfono"
+                      formControlName="phone"
+                      type="tel"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                      onKeyDown="if(this.value.length==8 && event.keyCode!=8) return false;"
+                    />
+                  </div>
+                  <mat-error
+                    *ngIf="
+                      formUser.get('phone').invalid &&
+                      (formUser?.get('phone').dirty ||
+                        formUser?.get('phone').touched)
+                    "
+                  >
+                    {{ getErrorMessage("phone") }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text icon_register"
+                    ><i class="ni ni-square-pin"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control input_register"
+                  placeholder="Dirección"
+                  type="text"
+                  formControlName="address"
+                />
+              </div>
+              <mat-error
+                *ngIf="
+                  formUser.get('address').invalid &&
+                  (formUser?.get('address').dirty ||
+                    formUser?.get('address').touched)
+                "
+              >
+                {{ getErrorMessage("address") }}
+              </mat-error>
+            </div>
+
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text icon_register"
+                    ><i class="ni ni-email-83"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control input_register"
+                  placeholder="Correo Electrónico"
+                  type="email"
+                  formControlName="email"
+                />
+              </div>
+              <mat-error
+                *ngIf="
+                  formUser.get('email').invalid &&
+                  (formUser?.get('email').dirty ||
+                    formUser?.get('email').touched)
+                "
+              >
+                {{ getErrorMessage("email") }}
+              </mat-error>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span
+                        class="input-group-text icon_register"
+                        (click)="_typePass = !_typePass"
+                      >
+                        <i
+                          class="fa"
+                          [ngClass]="!_typePass ? 'fa-eye' : 'fa-eye-slash'"
+                        ></i>
+                      </span>
+                    </div>
+                    <input
+                      class="form-control input_register"
+                      placeholder="Contraseña"
+                      [type]="_typePass ? 'password' : 'text'"
+                      formControlName="password"
+                    />
+                  </div>
+                  <mat-error
+                    *ngIf="
+                      formUser.get('password').invalid &&
+                      (formUser?.get('password').dirty ||
+                        formUser?.get('password').touched)
+                    "
+                  >
+                    {{ getErrorMessage("password") }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+
+            <!--Municipios-->
+            <div class="row align-items-center" formGroupName="municipe">
+              <div class="col" formGroupName="province">
+                <div class="form-group mb-3">
+                  <label class="form-control-label text-white txt_register"
+                    >Provincia:</label
+                  >
+                  <select
+                    class="form-control select_register"
+                    #provinces
+                    formControlName="id"
+                    (change)="verMunicipios(provinces.value)"
+                  >
+                    <option
+                      *ngFor="let prov of _ProvMun"
+                      value="{{ prov.provincia.id }}"
+                    >
+                      {{ prov.provincia.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group mb-3">
+                  <label class="form-control-label text-white txt_register"
+                    >Municipio:</label
+                  >
+                  <select
+                    class="form-control select_register"
+                    formControlName="id"
+                  >
+                    <option *ngFor="let mun of _municipes" value="{{ mun.id }}">
+                      {{ mun.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!--Fin Municipios-->
+            <div class="text-center">
+              <button
+                type="button"
+                id="cancel"
+                class="btn btn-danger my-1 btn_register"
+                [routerLink]="['/login']"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                id="accept"
+                class="btn my-1 btn_register"
+                [disabled]="formUser.invalid"
+              >
+                Registrar
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-2 col-md-2"></div>
+        <div class="col-lg-5 col-md-6">
+          <h1 class="bienv">Atención!</h1>
+          <div class="hr_bienv"></div>
+          <div id="second" class="hr_bienv"></div>
+          <p class="text-lead text-white text-justify">
+            <strong
+              >Se recomienda que todos los datos ingresados sean correctos. Para
+              poder brindarle un servicio con mayor rapidez y
+              eficiencia.</strong
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

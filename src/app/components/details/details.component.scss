@@ -1,0 +1,161 @@
+:host {
+  display: contents;
+}
+.images {
+  background-color: transparent !important;
+}
+.imagen_card {
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.18) !important;
+}
+.card_header_border {
+  border-bottom: 1px solid #fdc102 !important;
+}
+
+.property-info {
+  grid-row: 4 / 7;
+  grid-column: 2 / 8;
+  display: grid;
+  grid-template-rows: repeat(4, min-content);
+  grid-row-gap: 15px;
+
+  .heading-4 {
+    color: #121638;
+    font-size: 30px;
+  }
+
+  .type {
+    color: #858b93;
+    font-size: 16px;
+  }
+
+  .more {
+    color: #858b93;
+    font-size: 16px;
+  }
+}
+.encabezados {
+  color: #32325d;
+}
+.price {
+  color: #5175fb;
+  font-size: 81px;
+  font-weight: 700;
+  margin-top: -20px;
+}
+.price_contract {
+  color: #5175fb;
+  font-size: 55px;
+  font-weight: 700;
+  margin-top: -10px;
+}
+.wrapper_price {
+  position: absolute;
+  right: 10%;
+  top: -50px;
+
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transform: scale(1.2) rotateY(5deg);
+}
+.wrapper_price_solicitud {
+  position: absolute;
+  left: 5%;
+  top: -100px;
+
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transform: scale(1.2) rotateY(5deg);
+}
+.price_gratis {
+  color: #5175fb;
+  font-style: italic;
+  font-size: 24px;
+  font-weight: 700;
+}
+.cup {
+  font-size: 27px;
+  margin-top: 18px;
+  font-weight: 600;
+  font-style: italic;
+  color: #6074e4;
+}
+.titlesdetails {
+  transform: translate(0px);
+  opacity: 1;
+  color: #32325d;
+}
+.cup_contract {
+  font-size: 27px;
+  margin-top: 10px;
+  font-weight: 600;
+  font-style: italic;
+  color: #6074e4;
+}
+
+.call:disabled {
+  background-color: #858b93;
+}
+.back {
+  height: fit-content;
+  align-self: center;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  cursor: pointer;
+  justify-self: center;
+  transform: translateX(10px);
+
+  .icon-back {
+    fill: #121638;
+    width: 40px;
+    height: 40px;
+  }
+}
+.descrip {
+  margin-top: 16px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: 0;
+  background: #0f298a;
+  color: #fff;
+  height: 40px;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.18) !important;
+  padding: 20px 60px;
+  font-size: 20px;
+
+  border-radius: 50px;
+  width: 100%;
+}
+.card_details {
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.18) !important;
+  transition: all 0.3s ease-out;
+  width: 70%;
+  position: relative;
+}
+.card_expand {
+  width: 100% !important;
+}
+
+.wrapper_card_details {
+  display: flex;
+  justify-content: center;
+}
+.wrapper_form_solicitud {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}

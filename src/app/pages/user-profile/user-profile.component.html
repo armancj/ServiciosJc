@@ -1,0 +1,370 @@
+<div class="row">
+  <div class="col mb-5">
+    <div class="card card-profile shadow">
+      <div class="row justify-content-center">
+        <div class="col-lg-3 order-lg-2">
+          <div class="card-profile-image">
+            <ng-container
+              *ngIf="_usuario.avatar != 'user.png' && _usuario.avatar != null"
+            >
+              <div mat-card-avatar>
+                <img
+                  src="{{ urlapi }}/users/avatar/{{ _usuario.avatar }}"
+                  class="rounded-circle"
+                />
+              </div>
+            </ng-container>
+            <ng-container
+              *ngIf="_usuario.avatar == 'user.png' || _usuario.avatar == null"
+            >
+              <div mat-card-avatar>
+                <img src="assets/img/user.png" class="rounded-circle" />
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+        <div class="col-5 ml-auto text-right">
+          <button
+            class="btn btn-sm btn-primary"
+            *ngIf="desabilitado"
+            (click)="ActivarEdit()"
+          >
+            Editar Perfil
+          </button>
+        </div>
+      </div>
+      <div class="card-body pt-0 pt-md-4 mt-6">
+        <div class="text-center">
+          <h3>
+            {{ _usuario.fullname }}<span class="font-weight-light"></span>
+          </h3>
+          <div class="h5 mt-2">
+            <i class="fa fa-envelope mr-2"></i>{{ _usuario.email }}
+          </div>
+          <div class="h5 font-weight-300">
+            <i class="fa fa-phone mr-2"></i>Telef: {{ _usuario.phone }}
+          </div>
+          <div class="h5 mt-4">
+            <i class="ni business_briefcase-24 mr-2"></i>{{ _usuario.address }}
+          </div>
+          <div>
+            <i class="ni education_hat mr-2" *ngIf="_usuario.municipe"></i
+            >{{ _usuario.municipe.province.name }},
+            {{ _usuario.municipe.name }}
+          </div>
+          <hr class="my-4" />
+          <ng-container *ngIf="desabilitado">
+            <div class="bg-light border-0">
+              <h3 class="text-dark mb-0">Mis Solicitudes</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-light table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Total</th>
+                    <th scope="col">Sin Revisar</th>
+                    <th scope="col">Revisadas</th>
+                    <th scope="col">Completas</th>
+                    <th scope="col">Cerradas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      {{ _cantPStatus.total }}
+                    </th>
+                    <td>{{ _cantPStatus.recibida }}</td>
+                    <td>{{ _cantPStatus.revisada }}</td>
+                    <td>{{ _cantPStatus.despachada }}</td>
+                    <td>{{ _cantPStatus.cerrada }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <a href="javascript:void(0)" [routerLink]="['/solicitudes']"
+              >Ver mas</a
+            >
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!desabilitado">
+    <div class="col-xl-8 order-xl-1 editperfil">
+      <form [formGroup]="_formUser" (ngSubmit)="Editar()">
+        <div class="card bg-secondary shadow">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <ng-container
+                  *ngIf="
+                    _usuario.avatar != 'user.png' && _usuario.avatar != null
+                  "
+                >
+                  <div mat-card-avatar>
+                    <img
+                      *ngIf="_formUser.get('avatar').value"
+                      src="{{ urlapi }}/users/avatar/{{
+                        _formUser.get('avatar').value
+                      }}"
+                      class="rounded"
+                      (click)="open(content)"
+                    />
+                  </div>
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    _usuario.avatar == 'user.png' || _usuario.avatar == null
+                  "
+                >
+                  <div mat-card-avatar>
+                    <img
+                      *ngIf="_formUser.get('avatar').value"
+                      src="assets/img/user.png"
+                      class="rounded"
+                      (click)="open(content)"
+                    />
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8"></div>
+              <div class="col-5 ml-auto text-right">
+                <div class="botonesnormales">
+                  <button
+                    class="btn btn-sm btn-primary"
+                    [disabled]="_formUser.invalid"
+                    type="submit"
+                  >
+                    Guardar Cambios
+                  </button>
+                  <button
+                    class="btn btn-sm btn-danger"
+                    (click)="desabilitado = true"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="botonesrespon">
+              <button
+                class="btn btn-sm btn-primary"
+                [disabled]="_formUser.invalid"
+                type="submit"
+              >
+                Guardar Cambios
+              </button>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="desabilitado = true"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <h6 class="heading-small text-muted mb-4">
+              Informacion de Usuario
+            </h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="fullname">{{
+                      _usuario.rol == "CLIENT"
+                        ? "Nombre y Apellidos"
+                        : "Nombre de la Entidad"
+                    }}</label>
+                    <input
+                      type="text"
+                      id="fullname"
+                      class="form-control form-control-alternative"
+                      placeholder="Nombre"
+                      formControlName="fullname"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="username"
+                      >Usuario</label
+                    >
+                    <input
+                      type="text"
+                      id="username"
+                      class="form-control form-control-alternative"
+                      placeholder="Usuario"
+                      formControlName="username"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="fullname">{{
+                      _usuario.rol == "CLIENT" ? "No.Carnet" : "Código REUP"
+                    }}</label>
+                    <input
+                      type="text"
+                      id="fullname"
+                      class="form-control form-control-alternative"
+                      placeholder="CI"
+                      formControlName="ci"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="phone"
+                      >Telefono</label
+                    >
+                    <input
+                      type="text"
+                      id="phone"
+                      class="form-control form-control-alternative"
+                      placeholder="54232211"
+                      formControlName="phone"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <label class="form-control-label" for="email">Correo</label>
+                  <div
+                    class="form-group"
+                    [ngClass]="{
+                      'has-success': _usuario.status == 'ACTIVE',
+                      'has-danger': _usuario.status == 'NO_VERIFIED'
+                    }"
+                  >
+                    <input
+                      type="text"
+                      id="input-email"
+                      class="form-control form-control-alternative"
+                      placeholder="user@gmail.com"
+                      formControlName="email"
+                    />
+                    <span
+                      class="text-danger cursor"
+                      *ngIf="_usuario.status == 'NO_VERIFIED'"
+                      [swal]="codigoSwal"
+                      (click)="EnviarCorreo()"
+                      >Por favor active su correo
+                    </span>
+                  </div>
+
+                  <swal
+                    #codigoSwal
+                    title="Revise su Correo: Inserte codigo de activacion"
+                    input="text"
+                    [swalOptions]="{
+                      confirmButtonText: 'Activar',
+                      showCancelButton: true,
+                      cancelButtonText: 'Cancelar'
+                    }"
+                    (confirm)="VerificarCodigo($event)"
+                  >
+                  </swal>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">
+              Información de Ubicación
+            </h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="address"
+                      >Dirección</label
+                    >
+                    <input
+                      id="address"
+                      class="form-control form-control-alternative"
+                      placeholder="Direccion"
+                      formControlName="address"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!--Municipios-->
+              <div class="row align-items-center" formGroupName="municipe">
+                <div class="col" formGroupName="province">
+                  <div class="form-group">
+                    <label class="form-control-label">Provincia:</label>
+                    <select
+                      class="form-control"
+                      #provinces
+                      formControlName="id"
+                      (change)="verMunicipios(provinces.value)"
+                    >
+                      <option
+                        *ngFor="let prov of _ProvMun"
+                        value="{{ prov.provincia.id }}"
+                      >
+                        {{ prov.provincia.name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label class="form-control-label">Municipio:</label>
+                    <select class="form-control" formControlName="id">
+                      <option
+                        *ngFor="let mun of _municipes"
+                        value="{{ mun.id }}"
+                      >
+                        {{ mun.name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!--Fin Municipios-->
+            </div>
+            <hr class="my-4" />
+          </div>
+        </div>
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <app-cropper-img (imgCropp)="file = $event"></app-cropper-img>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click'); uploadFile()"
+            >
+              Save
+            </button>
+          </div>
+        </ng-template>
+      </form>
+    </div>
+  </ng-container>
+</div>

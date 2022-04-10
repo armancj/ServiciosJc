@@ -1,0 +1,221 @@
+<nav
+  class="navbar navbar-vertical navbar-expand-md navbar-light bg-white sidebar-cliente"
+  id="sidenav-main"
+>
+  <div class="container-fluid">
+    <!-- Toggler -->
+    <ng-container *ngIf="_isLoged">
+      <button
+        class="navbar-toggler"
+        type="button"
+        (click)="isCollapsed = !isCollapsed"
+        aria-controls="sidenav-collapse-main"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </ng-container>
+    <!-- Brand -->
+    <a class="navbar-brand pt-0" routerLinkActive="active">
+      <img
+        src="assets/img/logos/logoazul2.png"
+        class="navbar-brand-img"
+        alt="..."
+      />
+    </a>
+    <!-- User -->
+    <ng-container *ngIf="_isLoged">
+      <ul class="nav align-items-center d-md-none">
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link nav-link-icon" role="button" ngbDropdownToggle>
+            <i class="ni ni-bell-55"></i
+            ><span
+              class="badge bg-danger"
+              *ngIf="_notifications.length != 0 && contador != 0"
+              >{{ contador }}</span
+            >
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <a
+              class="dropdown-item"
+              *ngIf="_notifications.length == 0"
+              href="javascript:void(0)"
+              >No tiene ninguna notificacion</a
+            >
+            <ng-container *ngIf="_notifications.length != 0">
+              <a
+                class="dropdown-item"
+                [ngClass]="{
+                  'text-red': _notif.status == 2,
+                  'text-blue': _notif.status == 1
+                }"
+                href="javascript:void(0)"
+                *ngFor="let _notif of _notifications"
+                (click)="LeerNotificacion(_notif.id)"
+              >
+                <span *ngIf="_notif.type == 2"
+                  >Su solicitud numero {{ _notif.request.id }} fue
+                  <a [routerLink]="'/solicitudes'">{{
+                    _notif.requestStatus | translate
+                  }}</a>
+                </span>
+                <span *ngIf="_notif.type == 3"
+                  >Su solicitud numero {{ _notif.request.id }} fue
+                  Modificada</span
+                >
+              </a>
+              <div class="dropdown-divider"></div>
+            </ng-container>
+          </div>
+        </li>
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link" role="button" ngbDropdownToggle>
+            <div class="media align-items-center">
+              <ng-container
+                *ngIf="
+                  _usuarioLoged.avatar != null &&
+                  _usuarioLoged.avatar != 'user.png'
+                "
+              >
+                <span class="avatar avatar-sm rounded-circle">
+                  <img
+                    alt="Image placeholder"
+                    src="{{ urlapi }}/users/avatar/{{ _usuarioLoged.avatar }}"
+                  />
+                </span>
+              </ng-container>
+              <ng-container
+                *ngIf="
+                  _usuarioLoged.avatar == null ||
+                  _usuarioLoged.avatar == 'user.png'
+                "
+              >
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="assets/img/user.png" />
+                </span>
+              </ng-container>
+            </div>
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <div class="dropdown-header noti-title">
+              <h6 class="text-overflow m-0">Bienvenido!</h6>
+            </div>
+
+            <a
+              routerLinkActive="active"
+              [routerLink]="['/perfil']"
+              class="dropdown-item"
+            >
+              <i class="ni ni-single-02"></i>
+              <span>Mi Perfil</span>
+            </a>
+
+            <a
+              routerLinkActive="active"
+              [routerLink]="['/solicitudes']"
+              class="dropdown-item"
+            >
+              <i class="ni ni-calendar-grid-58"></i>
+              <span>Mis solicitudes</span>
+            </a>
+
+            <a
+              class="dropdown-item downloadapk"
+              href="assets/apk/servicios.apk"
+            >
+              <i class="ni ni-cloud-download-95"></i>
+              <span>Descargar Apk</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#!" class="dropdown-item" (click)="logout()">
+              <i class="ni ni-user-run"></i>
+              <span>Salir</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-container *ngIf="!_isLoged">
+      <ul class="nav align-items-center d-md-none">
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link" role="button" ngbDropdownToggle>
+            <div class="media align-items-center">
+              <span class="avatar avatar-sm rounded-circle">
+                <img alt="Image placeholder" src="assets/img/user.png" />
+              </span>
+            </div>
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <a (click)="autenticar()" class="dropdown-item">
+              <i class="ni ni-button-power"></i>
+              <span>Autenticar</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+
+    <!-- Collapse -->
+    <div
+      class="collapse navbar-collapse"
+      [ngbCollapse]="isCollapsed"
+      id="sidenav-collapse-main"
+    >
+      <!-- Collapse header -->
+      <div class="navbar-collapse-header d-md-none">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a routerLinkActive="active" [routerLink]="['/inicio']">
+              <img src="./assets/img/brand/azul.png" />
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button
+              type="button"
+              class="navbar-toggler"
+              (click)="isCollapsed = !isCollapsed"
+            >
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Form -->
+
+      <!-- Navigation -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            [ngClass]="
+              _selected == 'servicio' ? 'selected nav-link' : 'nav-link'
+            "
+            href="javascript:void(0)"
+            routerLinkActive="active"
+            (click)="irA('/servicios', 'servicio')"
+          >
+            <div class="icon_opt">
+              <i class="ni ni-planet text-blue"></i>
+            </div>
+            Servicios
+          </a>
+          <div class="dropdown-divider"></div>
+
+          <a
+            href="javascript:void(0)"
+            routerLinkActive="active"
+            [ngClass]="
+              _selected == 'solicitud' ? 'selected nav-link' : 'nav-link'
+            "
+            (click)="irA('/solicitudes', 'solicitud')"
+          >
+            <div class="icon_opt">
+              <i class="ni ni-bullet-list-67 text-red"></i>
+            </div>
+            Solicitudes
+          </a>
+        </li>
+      </ul>
+      <div class="copy_r">&copy; {{ test | date: "yyyy" }} GDAI-Las Tunas</div>
+    </div>
+  </div>
+</nav>
